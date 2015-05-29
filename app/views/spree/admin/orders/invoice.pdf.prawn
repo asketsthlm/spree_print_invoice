@@ -13,7 +13,8 @@ font_families.update(
 
 #@font_face = Spree::PrintInvoice::Config[:font_face]
 puts Spree::PrintInvoice::Config[:font_face]
-@font_face = "ChronicleDisp"
+@font_face = ChronicleDisp
+puts @font_face
 @font_size = Spree::PrintInvoice::Config[:font_size]
 
 # HEADER
