@@ -10,14 +10,14 @@ repeat(:all) do
     image im.pathname, vposition: :top, position: :center, height: 100
   end
 
-  grid([0,3], [0,4]).bounding_box do
-    font "ChronicleDisp", size: @font_size
-    text "Your Delivery", align: :center, style: :bold, size: 18
-    move_down 4
-    text Spree.t(:order_number, number: @order.number), align: :right
-    move_down 2
-    text I18n.l(@order.completed_at.to_date), align: :right
-  end
+  font "ChronicleDisp", size: @font_size
+  move_down 50
+  text "Your Delivery", align: :center, style: :bold, size: 30
+  move_down 4
+#  text Spree.t(:order_number, number: @order.number), align: :right
+#  move_down 2
+#  text I18n.l(@order.completed_at.to_date), align: :right
+  
 end
 
 # CONTENT
