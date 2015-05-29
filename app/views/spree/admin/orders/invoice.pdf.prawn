@@ -11,7 +11,7 @@ repeat(:all) do
   end
 
   font "ChronicleDisp"
-  move_down 40
+  move_down 30
   text "Your Delivery", align: :center, style: :bold, size: 40
 #  move_down 4
 #  text Spree.t(:order_number, number: @order.number), align: :right
@@ -20,7 +20,7 @@ repeat(:all) do
 end
 
 # CONTENT
-grid([2,0], [7,4]).bounding_box do
+grid([3,0], [7,4]).bounding_box do
 
   font "FoundersGrotesk", size: @font_size
 
