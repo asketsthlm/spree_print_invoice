@@ -13,6 +13,20 @@ module ActionView
           def call(template)
             <<-PDF
               extend #{DocumentProxy}
+              pdf.font_families.update(
+                "ChronicleDisp" => {
+                  :normal => "/var/www/asket-backend/app/assets/fonts/ChronicleDisp-Light.ttf",
+                  :bold => "/var/www/asket-backend/app/assets/fonts/ChronicleDisp-Light.ttf",
+                  :bold_italic => "/var/www/asket-backend/app/assets/fonts/ChronicleDisp-Light.ttf",
+                  :italic => "/var/www/asket-backend/app/assets/fonts/ChronicleDisp-Light.ttf"
+                },
+                "FoundersGrotesk" => {
+                  :normal => "/var/www/asket-backend/app/assets/fonts/FoundersGrotesk-Light.ttf",
+                  :bold => "/var/www/asket-backend/app/assets/fonts/FoundersGrotesk-Medium.ttf",
+                  :bold_italic => "/var/www/asket-backend/app/assets/fonts/FoundersGrotesk-Medium.ttf",
+                  :italic => "/var/www/asket-backend/app/assets/fonts/FoundersGrotesk-Light.ttf"
+                }
+                )
               #{template.source}
               pdf.render
             PDF

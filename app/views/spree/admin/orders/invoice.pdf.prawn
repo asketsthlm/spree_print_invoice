@@ -1,20 +1,6 @@
 define_grid(columns: 5, rows: 8, gutter: 10)
 
-font_families.update(
-  "ChronicleDisp" => {
-    :light => "/var/www/asket-backend/app/assets/fonts/ChronicleDisp-Light.otf"
-  })
-
-font_families.update(
-  "FoundersGrotesk" => {
-    :light => "/var/www/asket-backend/app/assets/fonts/FoundersGrotesk-Light.otf",
-    :medium => "/var/www/asket-backend/app/assets/fonts/FoundersGrotesk-Medium.otf"
-  })
-
-#@font_face = Spree::PrintInvoice::Config[:font_face]
-puts Spree::PrintInvoice::Config[:font_face]
-@font_face = ChronicleDisp
-puts @font_face
+@font_face = Spree::PrintInvoice::Config[:font_face]
 @font_size = Spree::PrintInvoice::Config[:font_size]
 
 # HEADER
@@ -25,7 +11,7 @@ repeat(:all) do
   end
 
   grid([0,3], [0,4]).bounding_box do
-    font @font_face, size: @font_size
+    font "ChronicleDisp", size: @font_size
     text Spree.t(:invoice, scope: :print_invoice), align: :right, style: :bold, size: 18
     move_down 4
     text Spree.t(:order_number, number: @order.number), align: :right
@@ -37,7 +23,7 @@ end
 # CONTENT
 grid([1,0], [6,4]).bounding_box do
 
-  font @font_face, size: @font_size
+  font "ChronicleDisp", size: @font_size
 
   # address block on first page only
   repeat(lambda { |pg| pg == 1 }) do
