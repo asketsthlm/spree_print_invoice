@@ -1,6 +1,7 @@
 define_grid(columns: 5, rows: 8, gutter: 10)
 
-@font_face = Spree::PrintInvoice::Config[:font_face]
+#@font_face = Spree::PrintInvoice::Config[:font_face]
+@font_face = "/var/www/asket-backend/app/assets/fonts/ChronicleDisp-Light.otf"
 @font_size = Spree::PrintInvoice::Config[:font_size]
 
 # HEADER
