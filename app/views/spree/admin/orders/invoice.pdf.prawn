@@ -7,12 +7,12 @@ define_grid(columns: 5, rows: 8, gutter: 10)
 repeat(:all) do
   im = Rails.application.assets.find_asset(Spree::PrintInvoice::Config[:logo_path])
   if im && File.exist?(im.pathname)
-    image im.pathname, vposition: :top, :position :center, height: 100
+    image im.pathname, vposition: :top, position: :center, height: 100
   end
 
   grid([0,3], [0,4]).bounding_box do
     font "ChronicleDisp", size: @font_size
-    text Spree.t(:invoice, scope: :print_invoice), align: :right, style: :bold, size: 18
+    text "Your Delivery", align: :center, style: :bold, size: 18
     move_down 4
     text Spree.t(:order_number, number: @order.number), align: :right
     move_down 2
