@@ -12,16 +12,15 @@ repeat(:all) do
 
   font "ChronicleDisp"
   move_down 40
-  text "Your Delivery", align: :center, style: :bold, size: 35
-  move_down 4
+  text "Your Delivery", align: :center, style: :bold, size: 40
+#  move_down 4
 #  text Spree.t(:order_number, number: @order.number), align: :right
 #  move_down 2
 #  text I18n.l(@order.completed_at.to_date), align: :right
-  
 end
 
 # CONTENT
-grid([3,0], [7,4]).bounding_box do
+grid([2,0], [7,4]).bounding_box do
 
   font "FoundersGrotesk", size: @font_size
 
