@@ -1,8 +1,19 @@
 define_grid(columns: 5, rows: 8, gutter: 10)
 
+font_families.update(
+  "ChronicleDisp" => {
+    :light => "/var/www/asket-backend/app/assets/fonts/ChronicleDisp-Light.otf"
+  })
+
+font_families.update(
+  "FoundersGrotesk" => {
+    :light => "/var/www/asket-backend/app/assets/fonts/FoundersGrotesk-Light.otf",
+    :medium => "/var/www/asket-backend/app/assets/fonts/FoundersGrotesk-Medium.otf"
+  })
+
 #@font_face = Spree::PrintInvoice::Config[:font_face]
 puts Spree::PrintInvoice::Config[:font_face]
-@font_face = "/var/www/asket-backend/app/assets/fonts/ChronicleDisp-Light.otf"
+@font_face = "ChronicleDisp"
 @font_size = Spree::PrintInvoice::Config[:font_size]
 
 # HEADER
