@@ -23,7 +23,7 @@ end
 # CONTENT
 grid([3,0], [7,4]).bounding_box do
 
-  font "ChronicleDisp", size: @font_size
+  font "FoundersGrotesk", size: @font_size
 
   # address block on first page only
   repeat(lambda { |pg| pg == 1 }) do
