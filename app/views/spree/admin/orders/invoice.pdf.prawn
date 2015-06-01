@@ -149,10 +149,10 @@ if Spree::PrintInvoice::Config[:use_footer]
     grid([13,0], [13,9]).bounding_box do
 
       data  = []
-      data << [make_cell(content: Spree.t(:vat, scope: :print_invoice), colspan: 2, align: :center)]
-      data << [make_cell(content: '', colspan: 2)]
-      data << [make_cell(content: Spree::PrintInvoice::Config[:footer_left],  align: :left),
-      make_cell(content: Spree::PrintInvoice::Config[:footer_right], align: :right)]
+      #data << [make_cell(content: Spree.t(:vat, scope: :print_invoice), colspan: 2, align: :center)]
+      #data << [make_cell(content: '', colspan: 2)]
+      data << [make_cell(content: Spree::PrintInvoice::Config[:footer_left],  align: :center),
+      make_cell(content: Spree::PrintInvoice::Config[:footer_right], align: :center)]
 
       table(data, position: :center) do
         row(0..2).style borders: []
