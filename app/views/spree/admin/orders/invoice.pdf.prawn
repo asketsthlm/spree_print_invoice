@@ -31,40 +31,42 @@ grid([5,0], [12,9]).bounding_box do
 
   move_down 10
 
-  order_number_h  = make_cell(content: "Order Number".upcase, font_style: :bold, borders: [])
-  order_date_h = make_cell(content: "Order Date".upcase, font_style: :bold, borders: [])
-  payment_method_h = make_cell(content: "Payment Method".upcase, font_style: :bold, borders: [])
-  delivery_h = make_cell(content: "Delivery".upcase, font_style: :bold, borders: [])
+  order_number_h  = make_cell(content: "Order Number".upcase, font_style: :bold, borders: [], padding: 0)
+  order_date_h = make_cell(content: "Order Date".upcase, font_style: :bold, borders: [], padding: 0)
+  payment_method_h = make_cell(content: "Payment Method".upcase, font_style: :bold, borders: [], padding: 0)
+  delivery_h = make_cell(content: "Delivery".upcase, font_style: :bold, borders: [], padding: 0)
 
-  order_number = Spree.t(:order_number, number: @order.number)
-  order_date = I18n.l(@order.completed_at.to_date)
-  payment_method = "Credit Card (Paid)"
-  delivery = @order.shipments[0].shipping_method.name
+  order_number = make_cell(content: Spree.t(:order_number, number: @order.number), borders: [], padding: 0)
+  order_date = make_cell(content: I18n.l(@order.completed_at.to_date), borders: [], padding: 0)
+  payment_method = make_cell(content: "Credit Card (Paid)", borders: [], padding: 0)
+  delivery = make_cell(content: @order.shipments[0].shipping_method.name, borders: [], padding: 0)
 
   data = [[order_number_h, order_date_h, payment_method_h, delivery_h], [order_number, order_date, payment_method, delivery]]
-  table(data, position: :left, column_widths: [98, 97,98,97])
+  table(data, position: :left, column_widths: [100, 100,100,100])
 
   move_down 10
-  address_cell_billing  = make_cell(content: Spree.t(:billing_address).upcase, font_style: :bold, borders: [])
-  address_cell_shipping = make_cell(content: Spree.t(:shipping_address).upcase, font_style: :bold, borders: [])
+  address_cell_billing  = make_cell(content: Spree.t(:billing_address).upcase, font_style: :bold, borders: [], padding: 0)
+  address_cell_shipping = make_cell(content: Spree.t(:shipping_address).upcase, font_style: :bold, borders: [], padding: 0)
 
   #billing =  "#{bill_address.firstname} #{bill_address.lastname}"
-  billing = "#{bill_address.address1}"
-  billing << ", #{bill_address.address2}" unless bill_address.address2.blank?
-  billing << "\n#{bill_address.city}, #{bill_address.state_text} #{bill_address.zipcode}"
-  billing << ", #{bill_address.country.name}"
+  billingt = "#{bill_address.address1}"
+  billingt << ", #{bill_address.address2}" unless bill_address.address2.blank?
+  billingt << "\n#{bill_address.city}, #{bill_address.state_text} #{bill_address.zipcode}"
+  billingt << ", #{bill_address.country.name}"
   #billing << "\n#{bill_address.phone}"
+  billing = make_cell(content: billingt, borders: [], padding: 0)
 
   #shipping =  "#{ship_address.firstname} #{ship_address.lastname}"
-  shipping = "#{ship_address.address1}"
-  shipping << ", #{ship_address.address2}" unless ship_address.address2.blank?
-  shipping << "\n#{ship_address.city}, #{ship_address.state_text} #{ship_address.zipcode}"
-  shipping << ", #{ship_address.country.name}"
+  shippingt = "#{ship_address.address1}"
+  shippingt << ", #{ship_address.address2}" unless ship_address.address2.blank?
+  shippingt << "\n#{ship_address.city}, #{ship_address.state_text} #{ship_address.zipcode}"
+  shippingt << ", #{ship_address.country.name}"
   #shipping << "\n#{ship_address.phone}"
   #shipping << "\n\n#{Spree.t(:via, scope: :print_invoice)} #{@order.shipments.first.shipping_method.name}"
+  shipping = make_cell(content: shippingt, borders: [], padding: 0)
 
   data = [[address_cell_billing, address_cell_shipping], [billing, shipping]]
-  table(data, position: :left, column_widths: [195, 195])
+  table(data, position: :left, column_widths: [200, 200])
 
 
   move_down 10
