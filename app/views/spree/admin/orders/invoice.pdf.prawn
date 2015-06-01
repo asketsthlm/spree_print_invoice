@@ -20,7 +20,7 @@ repeat(:all) do
 end
 
 # CONTENT
-grid([5,1], [12,8]).bounding_box do
+grid([5,0], [12,9]).bounding_box do
 
   font "FoundersGrotesk", size: @font_size
 
