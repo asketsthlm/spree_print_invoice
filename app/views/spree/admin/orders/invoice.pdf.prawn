@@ -82,8 +82,8 @@ grid([5,0], [12,9]).bounding_box do
     make_cell(content: Spree.t(:item).upcase),
     make_cell(content: "Color".upcase),
     make_cell(content: "Size".upcase),
-    make_cell(content: Spree.t(:price).upcase),
     make_cell(content: Spree.t(:qty).upcase),
+    make_cell(content: Spree.t(:price).upcase),
     make_cell(content: Spree.t(:total).upcase)
   ]
   data = [header]
@@ -101,15 +101,15 @@ grid([5,0], [12,9]).bounding_box do
     data += [row]
   end
 
-  table(data, header: true, position: :right, column_widths: [50, 80, 60, 80, 54, 40, 50]) do
+  table(data, header: true, position: :right, column_widths: [60, 80, 67, 73, 44, 40, 50]) do
     row(0).style align: :center, font_style: :bold, borders: [], padding: 0
-    column(0..2).style align: :left, borders: [], padding: 0
-    column(3..6).style align: :right, borders: [], padding: 0
+    column(0..4).style align: :left, borders: [], padding: 0
+    column(5..6).style align: :right, borders: [], padding: 0
     row(-1).style borders: [:bottom], padding_bottom: 5
   end
 
   # TOTALS
-  move_down 10
+  move_down 5
   totals = []
 
   # Subtotal
@@ -122,7 +122,7 @@ grid([5,0], [12,9]).bounding_box do
 
   # Shipments
   @order.shipments.each do |shipment|
-    totals << [make_cell(content: shipment.shipping_method.name), shipment.display_cost.to_s]
+    totals << [make_cell(content: "Shipping"), shipment.display_cost.to_s]
   end
 
   # Totals
