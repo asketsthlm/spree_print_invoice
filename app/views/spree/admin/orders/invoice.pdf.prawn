@@ -4,8 +4,8 @@ define_grid(columns: 10, rows: 16, gutter: 10)
 @font_size = Spree::PrintInvoice::Config[:font_size]
 
 line_width 1
-line -90,390,-20,390
-line -90,780,-20,780
+line -90,265.63,-80,265.63
+line -90,546.26,-80,546.26
 
 # HEADER
 repeat(:all) do
