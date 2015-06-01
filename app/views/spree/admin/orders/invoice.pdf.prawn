@@ -101,7 +101,7 @@ grid([5,0], [12,9]).bounding_box do
     data += [row]
   end
 
-  table(data, header: true, position: :right, column_widths: [50, 70, 80, 80, 44, 40, 50]) do
+  table(data, header: true, position: :right, column_widths: [50, 80, 60, 80, 54, 40, 50]) do
     row(0).style align: :center, font_style: :bold, borders: [], padding: 0
     column(0..2).style align: :left, borders: [], padding: 0
     column(3..6).style align: :right, borders: [], padding: 0
@@ -120,10 +120,10 @@ grid([5,0], [12,9]).bounding_box do
     totals << [make_cell(content: adjustment.label), adjustment.display_amount.to_s]
   end
 
-  # Shipments
-  #@order.shipments.each do |shipment|
-  #  totals << [make_cell(content: shipment.shipping_method.name), shipment.display_cost.to_s]
-  #end
+   Shipments
+  @order.shipments.each do |shipment|
+    totals << [make_cell(content: shipment.shipping_method.name), shipment.display_cost.to_s]
+  end
 
   # Totals
   totals << [make_cell(content: Spree.t(:order_total)), @order.display_total.to_s]
@@ -145,7 +145,7 @@ grid([5,0], [12,9]).bounding_box do
   #end
 
   table(totals, position: :right, column_widths: [100, 50]) do
-    row(0..4).style align: :right, borders: [], padding: 0
+    row(0..5).style align: :right, borders: [], padding: 0
     column(0).style borders: [], padding: 0
     row(-1).style align: :right, font_style: :bold
   end
@@ -166,7 +166,7 @@ if Spree::PrintInvoice::Config[:use_footer]
       make_cell(content: Spree::PrintInvoice::Config[:footer_right], align: :center)]
 
       table(data, position: :center) do
-        row(0..2).style borders: []
+        row(0..2).style borders: [], padding: 0
       end
     end
   end
