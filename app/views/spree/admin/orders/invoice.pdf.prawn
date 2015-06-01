@@ -75,7 +75,7 @@ grid([5,0], [12,9]).bounding_box do
     data += [row]
   end
 
-  table(data, header: true, position: :center, column_widths: [70, 200, 100, 65, 40, 65]) do
+  table(data, header: true, position: :center) do
     row(0).style align: :center, font_style: :bold
     column(0..2).style align: :left
     column(3..6).style align: :right
@@ -117,7 +117,7 @@ grid([5,0], [12,9]).bounding_box do
     total_payments += payment.amount
   end
 
-  table(totals, column_widths: [475, 65]) do
+  table(totals) do
     row(0..6).style align: :right
     column(0).style borders: [], font_style: :bold
   end
