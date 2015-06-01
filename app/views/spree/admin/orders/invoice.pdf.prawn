@@ -25,12 +25,12 @@ grid([5,0], [12,9]).bounding_box do
   font "FoundersGrotesk", size: @font_size
   bill_address = @order.bill_address
   ship_address = @order.ship_address
-
+  move_down 10
   text "#{bill_address.firstname.upcase} #{bill_address.lastname.upcase}", style: :bold, character_spacing: 1
 
-  move_down 30
+  move_down 25
 
-  order_number_h  = make_cell(content: Spree.t(:order_number).upcase, font_style: :bold, borders: [], padding: 0)
+  order_number_h  = make_cell(content: "Order Number".upcase, font_style: :bold, borders: [], padding: 0)
   order_date_h = make_cell(content: "Order Date".upcase, font_style: :bold, borders: [], padding: 0)
   payment_method_h = make_cell(content: "Payment Method".upcase, font_style: :bold, borders: [], padding: 0)
   delivery_h = make_cell(content: "Delivery".upcase, font_style: :bold, borders: [], padding: 0)
@@ -43,7 +43,7 @@ grid([5,0], [12,9]).bounding_box do
   data = [[order_number_h, order_date_h, payment_method_h, delivery_h], [order_number, order_date, payment_method, delivery]]
   table(data, position: :left, column_widths: [103, 104,103,104])
 
-  move_down 30
+  move_down 25
   address_cell_billing  = make_cell(content: Spree.t(:billing_address).upcase, font_style: :bold, borders: [], padding: 0)
   address_cell_shipping = make_cell(content: Spree.t(:shipping_address).upcase, font_style: :bold, borders: [], padding: 0)
 
@@ -146,7 +146,7 @@ end
 # FOOTER
 if Spree::PrintInvoice::Config[:use_footer]
   repeat(:all) do
-    grid([13,0], [13,9]).bounding_box do
+    grid([14,0], [14,9]).bounding_box do
 
       data  = []
       #data << [make_cell(content: Spree.t(:vat, scope: :print_invoice), colspan: 2, align: :center)]
