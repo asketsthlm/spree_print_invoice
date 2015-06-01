@@ -26,7 +26,8 @@ grid([5,0], [12,9]).bounding_box do
   bill_address = @order.bill_address
   ship_address = @order.ship_address
   move_down 20
-  text "#{bill_address.firstname.upcase} #{bill_address.lastname.upcase}", style: :bold, character_spacing: 0.5
+  text "#{bill_address.firstname.upcase} #{bill_address.lastname.upcase}", style: :bold
+  #, character_spacing: 0.5
 
   move_down 20
 
@@ -134,7 +135,7 @@ grid([5,0], [12,9]).bounding_box do
   #  total_payments += payment.amount
   #end
 
-  table(totals, position: :right, column_widths: [40, 50]) do
+  table(totals, position: :right, column_widths: [100, 50]) do
     row(0..4).style align: :right, borders: [], padding: 0
     column(0).style borders: [], padding: 0
   end
