@@ -3,6 +3,10 @@ define_grid(columns: 10, rows: 16, gutter: 10)
 @font_face = Spree::PrintInvoice::Config[:font_face]
 @font_size = Spree::PrintInvoice::Config[:font_size]
 
+line_width 1
+line -90,390,-20,390
+line -90,780,-20,780
+
 # HEADER
 repeat(:all) do
   im = Rails.application.assets.find_asset(Spree::PrintInvoice::Config[:logo_path])
@@ -31,7 +35,7 @@ grid([5,0], [12,9]).bounding_box do
 
   move_down 20
 
-  line -85,500,100,500
+  
 
   order_number_h  = make_cell(content: "Order Number".upcase, font_style: :bold, borders: [], padding: 0)
   order_date_h = make_cell(content: "Order Date".upcase, font_style: :bold, borders: [], padding: 0)
