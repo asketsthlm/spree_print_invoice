@@ -35,7 +35,7 @@ module ActionView
 
         module DocumentProxy
           def pdf
-            @pdf ||= ::Prawn::Document.new(:page_size => "A4", :page_layout => :portrait, :margin => [10, 20, 10, 20])
+            @pdf ||= ::Prawn::Document.new(:page_size => "A4", :page_layout => :portrait, :margin => [10, 50])
           end
 
           private
