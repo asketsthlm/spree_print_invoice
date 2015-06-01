@@ -6,7 +6,6 @@ define_grid(columns: 10, rows: 16, gutter: 10)
 line_width 0.001
 line -90,265.63,-70,265.63
 line -90,546.26,-70,546.26
-line 197.6,100,217.64,100
 
 # HEADER
 repeat(:all) do
@@ -154,7 +153,8 @@ grid([5,0], [12,9]).bounding_box do
   move_down 30
   text Spree::PrintInvoice::Config[:return_message], align: :right, size: @font_size
 end
-
+line_width 2
+line 197.6,150,217.64,150
 # FOOTER
 if Spree::PrintInvoice::Config[:use_footer]
   repeat(:all) do
