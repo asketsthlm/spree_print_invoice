@@ -6,7 +6,6 @@ define_grid(columns: 10, rows: 16, gutter: 10)
 line_width 0.001
 line -90,265.63,-70,265.63
 line -90,546.26,-70,546.26
-line_width 3
 line 197.6,200,217.64,200
 
 # HEADER
@@ -167,7 +166,7 @@ if Spree::PrintInvoice::Config[:use_footer]
       data << [make_cell(content: Spree::PrintInvoice::Config[:footer_left],  align: :center),
       make_cell(content: Spree::PrintInvoice::Config[:footer_right], align: :center)]
 
-      table(data, position: :center) do
+      table(data, position: :center, column_widths: [207, 207]) do
         row(0..2).style borders: [], padding: 0
       end
     end
