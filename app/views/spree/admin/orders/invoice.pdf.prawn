@@ -41,7 +41,7 @@ grid([5,0], [12,9]).bounding_box do
   delivery = make_cell(content: @order.shipments[0].shipping_method.name, borders: [], padding: 0)
 
   data = [[order_number_h, order_date_h, payment_method_h, delivery_h], [order_number, order_date, payment_method, delivery]]
-  table(data, position: :left, column_widths: [105, 105,105,105])
+  table(data, position: :left, column_widths: [103, 104,103,104])
 
   move_down 30
   address_cell_billing  = make_cell(content: Spree.t(:billing_address).upcase, font_style: :bold, borders: [], padding: 0)
@@ -65,7 +65,7 @@ grid([5,0], [12,9]).bounding_box do
   shipping = make_cell(content: shippingt, borders: [], padding: 0)
 
   data = [[address_cell_billing, address_cell_shipping], [billing, shipping]]
-  table(data, position: :left, column_widths: [210, 210])
+  table(data, position: :left, column_widths: [207, 207])
 
 
   move_down 10
