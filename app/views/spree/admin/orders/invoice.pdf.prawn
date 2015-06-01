@@ -3,10 +3,10 @@ define_grid(columns: 10, rows: 16, gutter: 10)
 @font_face = Spree::PrintInvoice::Config[:font_face]
 @font_size = Spree::PrintInvoice::Config[:font_size]
 
-line_width 0.05
+line_width 0.001
 line -90,265.63,-70,265.63
 line -90,546.26,-70,546.26
-line_width 2
+line_width 3
 line 197.6,200,217.64,200
 
 # HEADER
@@ -107,7 +107,7 @@ grid([5,0], [12,9]).bounding_box do
     row(0).style align: :center, font_style: :bold, borders: [], padding: 0
     column(0..4).style align: :left, borders: [], padding: 0
     column(5..6).style align: :right, borders: [], padding: 0
-    row(-1).style borders: [:bottom], padding_bottom: 5
+    row(-1).style borders: [:bottom], border_widths: [0,0,0.1,0] padding_bottom: 5
   end
 
   # TOTALS
