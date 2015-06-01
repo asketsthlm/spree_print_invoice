@@ -3,9 +3,9 @@ define_grid(columns: 10, rows: 16, gutter: 10)
 @font_face = Spree::PrintInvoice::Config[:font_face]
 @font_size = Spree::PrintInvoice::Config[:font_size]
 
-line_width 0.2
-line -90,265.63,-60,265.63
-line -90,546.26,-60,546.26
+line_width 0.05
+line -90,265.63,-70,265.63
+line -90,546.26,-70,546.26
 
 # HEADER
 repeat(:all) do
@@ -80,7 +80,8 @@ grid([5,0], [12,9]).bounding_box do
   header = [
     make_cell(content: Spree.t(:sku).upcase),
     make_cell(content: Spree.t(:item).upcase),
-    make_cell(content: Spree.t(:options).upcase),
+    make_cell(content: "Color".upcase),
+    make_cell(content: "Size".upcase),
     make_cell(content: Spree.t(:price).upcase),
     make_cell(content: Spree.t(:qty).upcase),
     make_cell(content: Spree.t(:total).upcase)
@@ -91,7 +92,8 @@ grid([5,0], [12,9]).bounding_box do
     row = [
       item.variant.sku,
       item.variant.name,
-      item.variant.options_text,
+      item.variant.option_values[0].presentation,
+      item.variant.option_values[1].presentation + " - " + item.variant.option_values[2].presentation
       item.single_display_amount.to_s,
       item.quantity,
       item.display_total.to_s
@@ -99,7 +101,7 @@ grid([5,0], [12,9]).bounding_box do
     data += [row]
   end
 
-  table(data, header: true, position: :right, column_widths: [50, 70, 160, 44, 40, 50]) do
+  table(data, header: true, position: :right, column_widths: [50, 70, 80, 80, 44, 40, 50]) do
     row(0).style align: :center, font_style: :bold, borders: [], padding: 0
     column(0..2).style align: :left, borders: [], padding: 0
     column(3..6).style align: :right, borders: [], padding: 0
