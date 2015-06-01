@@ -107,7 +107,7 @@ grid([5,0], [12,9]).bounding_box do
     row(0).style align: :center, font_style: :bold, borders: [], padding: 0
     column(0..4).style align: :left, borders: [], padding: 0
     column(5..6).style align: :right, borders: [], padding: 0
-    row(-1).style borders: [:bottom], border_widths: [0,0,0.1,0] padding_bottom: 5
+    row(-1).style borders: [:bottom], border_widths: [0,0,0.1,0], padding_bottom: 5
   end
 
   # TOTALS
