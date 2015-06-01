@@ -7,6 +7,8 @@ line_width 0.001
 line -90,265.63,-70,265.63
 line -90,546.26,-70,546.26
 
+line_width 3
+line 197.6,150,217.64,150
 # HEADER
 repeat(:all) do
   im = Rails.application.assets.find_asset(Spree::PrintInvoice::Config[:logo_path])
@@ -157,8 +159,6 @@ end
 # FOOTER
 if Spree::PrintInvoice::Config[:use_footer]
   repeat(:all) do
-    line_width 2
-    line 197.6,150,217.64,150
     grid([14,0], [14,9]).bounding_box do
 
       data  = []
