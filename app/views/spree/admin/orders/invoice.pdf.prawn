@@ -68,8 +68,8 @@ grid([5,0], [12,9]).bounding_box do
   #shipping =  "#{ship_address.firstname} #{ship_address.lastname}"
   shippingt = "#{ship_address.address1}"
   shippingt << ", #{ship_address.address2}" unless ship_address.address2.blank?
-  shippingt << "\n#{ship_address.city}, #{ship_address.state_text} #{ship_address.zipcode}"
-  shippingt << ", #{ship_address.country.name}"
+  shippingt << "\n#{ship_address.state_text} #{ship_address.zipcode}"
+  shippingt << ", #{ship_address.city}, #{ship_address.country.name}"
   #shipping << "\n#{ship_address.phone}"
   #shipping << "\n\n#{Spree.t(:via, scope: :print_invoice)} #{@order.shipments.first.shipping_method.name}"
   shipping = make_cell(content: shippingt, borders: [], padding: 0)
