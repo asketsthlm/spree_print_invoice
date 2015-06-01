@@ -26,14 +26,15 @@ grid([5,0], [12,9]).bounding_box do
   bill_address = @order.bill_address
   ship_address = @order.ship_address
 
-  text "#{bill_address.firstname.upcase} #{bill_address.lastname.upcase}", style: :bold, character_spacing: 2
+  text "#{bill_address.firstname.upcase} #{bill_address.lastname.upcase}", style: :bold
+  #character_spacing: 2
 
   move_down 10
 
-  order_number_h  = make_cell(content: "Order Number".upcase, font_style: :bold)
-  order_date_h = make_cell(content: "Order Date".upcase, font_style: :bold)
-  payment_method_h = make_cell(content: "Payment Method".upcase, font_style: :bold)
-  delivery_h = make_cell(content: "Delivery".upcase, font_style: :bold)
+  order_number_h  = make_cell(content: "Order Number".upcase, font_style: :bold, borders: [])
+  order_date_h = make_cell(content: "Order Date".upcase, font_style: :bold, borders: [])
+  payment_method_h = make_cell(content: "Payment Method".upcase, font_style: :bold, borders: [])
+  delivery_h = make_cell(content: "Delivery".upcase, font_style: :bold, borders: [])
 
   order_number = Spree.t(:order_number, number: @order.number)
   order_date = I18n.l(@order.completed_at.to_date)
@@ -41,36 +42,36 @@ grid([5,0], [12,9]).bounding_box do
   delivery = @order.shipments[0].shipping_method.name
 
   data = [[order_number_h, order_date_h, payment_method_h, delivery_h], [order_number, order_date, payment_method, delivery]]
-  table(data, position: :left, column_widths: [122, 122,122,122])
+  table(data, position: :left, column_widths: [98, 97,98,97])
 
   move_down 10
-  address_cell_billing  = make_cell(content: Spree.t(:billing_address).upcase, font_style: :bold)
-  address_cell_shipping = make_cell(content: Spree.t(:shipping_address).upcase, font_style: :bold)
+  address_cell_billing  = make_cell(content: Spree.t(:billing_address).upcase, font_style: :bold, borders: [])
+  address_cell_shipping = make_cell(content: Spree.t(:shipping_address).upcase, font_style: :bold, borders: [])
 
   #billing =  "#{bill_address.firstname} #{bill_address.lastname}"
-  billing = "\n#{bill_address.address1}"
+  billing = "#{bill_address.address1}"
   billing << ", #{bill_address.address2}" unless bill_address.address2.blank?
   billing << "\n#{bill_address.city}, #{bill_address.state_text} #{bill_address.zipcode}"
   billing << ", #{bill_address.country.name}"
   #billing << "\n#{bill_address.phone}"
 
   #shipping =  "#{ship_address.firstname} #{ship_address.lastname}"
-  shipping = "\n#{ship_address.address1}"
-  shipping << "\n#{ship_address.address2}" unless ship_address.address2.blank?
+  shipping = "#{ship_address.address1}"
+  shipping << ", #{ship_address.address2}" unless ship_address.address2.blank?
   shipping << "\n#{ship_address.city}, #{ship_address.state_text} #{ship_address.zipcode}"
   shipping << ", #{ship_address.country.name}"
   #shipping << "\n#{ship_address.phone}"
   #shipping << "\n\n#{Spree.t(:via, scope: :print_invoice)} #{@order.shipments.first.shipping_method.name}"
 
   data = [[address_cell_billing, address_cell_shipping], [billing, shipping]]
-  table(data, position: :left, column_widths: [245, 245])
+  table(data, position: :left, column_widths: [195, 195])
 
 
   move_down 10
 
   header = [
     make_cell(content: Spree.t(:sku)),
-    make_cell(content: Spree.t(:item_description)),
+    make_cell(content: Spree.t(:item)),
     make_cell(content: Spree.t(:options)),
     make_cell(content: Spree.t(:price)),
     make_cell(content: Spree.t(:qty)),
