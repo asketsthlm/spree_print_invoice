@@ -120,7 +120,7 @@ grid([5,0], [12,9]).bounding_box do
     totals << [make_cell(content: adjustment.label), adjustment.display_amount.to_s]
   end
 
-   Shipments
+  # Shipments
   @order.shipments.each do |shipment|
     totals << [make_cell(content: shipment.shipping_method.name), shipment.display_cost.to_s]
   end
