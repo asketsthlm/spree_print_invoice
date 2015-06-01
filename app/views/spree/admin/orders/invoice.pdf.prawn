@@ -132,7 +132,7 @@ end
 # FOOTER
 if Spree::PrintInvoice::Config[:use_footer]
   repeat(:all) do
-    grid([15,0], [15,9]).bounding_box do
+    grid([13,0], [13,9]).bounding_box do
 
       data  = []
       data << [make_cell(content: Spree.t(:vat, scope: :print_invoice), colspan: 2, align: :center)]
