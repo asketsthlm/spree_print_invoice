@@ -1,4 +1,4 @@
-define_grid(columns: 5, rows: 8, gutter: 10)
+define_grid(columns: 10, rows: 16, gutter: 10)
 
 @font_face = Spree::PrintInvoice::Config[:font_face]
 @font_size = Spree::PrintInvoice::Config[:font_size]
@@ -11,7 +11,7 @@ repeat(:all) do
   end
 
   font "ChronicleDisp"
-  move_down 30
+  move_down 27
   text "Your Delivery", align: :center, style: :bold, size: 40
 #  move_down 4
 #  text Spree.t(:order_number, number: @order.number), align: :right
@@ -20,9 +20,11 @@ repeat(:all) do
 end
 
 # CONTENT
-grid([3,0], [7,4]).bounding_box do
+grid([5,1], [12,8]).bounding_box do
 
   font "FoundersGrotesk", size: @font_size
+
+  text "#{bill_address.firstname.upcase} #{bill_address.lastname.upcase}"
 
   # address block on first page only
   repeat(lambda { |pg| pg == 1 }) do
