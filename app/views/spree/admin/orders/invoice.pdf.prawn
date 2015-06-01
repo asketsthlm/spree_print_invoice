@@ -25,10 +25,10 @@ grid([5,0], [12,9]).bounding_box do
   font "FoundersGrotesk", size: @font_size
   bill_address = @order.bill_address
   ship_address = @order.ship_address
-  move_down 10
-  text "#{bill_address.firstname.upcase} #{bill_address.lastname.upcase}", style: :bold, character_spacing: 1
+  move_down 20
+  text "#{bill_address.firstname.upcase} #{bill_address.lastname.upcase}", style: :bold, character_spacing: 0.5
 
-  move_down 25
+  move_down 20
 
   order_number_h  = make_cell(content: "Order Number".upcase, font_style: :bold, borders: [], padding: 0)
   order_date_h = make_cell(content: "Order Date".upcase, font_style: :bold, borders: [], padding: 0)
@@ -43,7 +43,7 @@ grid([5,0], [12,9]).bounding_box do
   data = [[order_number_h, order_date_h, payment_method_h, delivery_h], [order_number, order_date, payment_method, delivery]]
   table(data, position: :left, column_widths: [103, 104,103,104])
 
-  move_down 25
+  move_down 20
   address_cell_billing  = make_cell(content: Spree.t(:billing_address).upcase, font_style: :bold, borders: [], padding: 0)
   address_cell_shipping = make_cell(content: Spree.t(:shipping_address).upcase, font_style: :bold, borders: [], padding: 0)
 
@@ -68,7 +68,7 @@ grid([5,0], [12,9]).bounding_box do
   table(data, position: :left, column_widths: [207, 207])
 
 
-  move_down 10
+  move_down 40
 
   header = [
     make_cell(content: Spree.t(:sku).upcase),
@@ -92,7 +92,7 @@ grid([5,0], [12,9]).bounding_box do
     data += [row]
   end
 
-  table(data, header: true, position: :right, column_widths: [50, 70, 140, 44, 40, 70]) do
+  table(data, header: true, position: :right, column_widths: [50, 70, 160, 44, 40, 50]) do
     row(0).style align: :center, font_style: :bold, borders: [], padding: 0
     column(0..2).style align: :left, borders: [], padding: 0
     column(3..6).style align: :right, borders: [], padding: 0
@@ -134,9 +134,9 @@ grid([5,0], [12,9]).bounding_box do
   #  total_payments += payment.amount
   #end
 
-  table(totals, position: :right) do
+  table(totals, position: :right, column_widths: [40, 50]) do
     row(0..4).style align: :right, borders: [], padding: 0
-    column(0).style borders: [], borders: [], padding: 0
+    column(0).style borders: [], padding: 0
   end
 
   move_down 30
