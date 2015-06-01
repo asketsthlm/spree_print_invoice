@@ -26,7 +26,7 @@ grid([5,0], [12,9]).bounding_box do
   bill_address = @order.bill_address
   ship_address = @order.ship_address
 
-  text "#{bill_address.firstname.upcase} #{bill_address.lastname.upcase}" font_style: :bold
+  text "#{bill_address.firstname.upcase} #{bill_address.lastname.upcase}", style: :bold
 
   move_down 2
   address_cell_billing  = make_cell(content: Spree.t(:billing_address).upcase, font_style: :bold)
