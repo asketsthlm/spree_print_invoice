@@ -71,12 +71,12 @@ grid([5,0], [12,9]).bounding_box do
   move_down 10
 
   header = [
-    make_cell(content: Spree.t(:sku)),
-    make_cell(content: Spree.t(:item)),
-    make_cell(content: Spree.t(:options)),
-    make_cell(content: Spree.t(:price)),
-    make_cell(content: Spree.t(:qty)),
-    make_cell(content: Spree.t(:total))
+    make_cell(content: Spree.t(:sku).upcase),
+    make_cell(content: Spree.t(:item).upcase),
+    make_cell(content: Spree.t(:options).upcase),
+    make_cell(content: Spree.t(:price).upcase),
+    make_cell(content: Spree.t(:qty).upcase),
+    make_cell(content: Spree.t(:total).upcase)
   ]
   data = [header]
 
@@ -92,10 +92,10 @@ grid([5,0], [12,9]).bounding_box do
     data += [row]
   end
 
-  table(data, header: true, position: :right) do
-    row(0).style align: :center, font_style: :bold
-    column(0..2).style align: :left
-    column(3..6).style align: :right
+  table(data, header: true, position: :right, column_widths: [50, 70, 140, 44, 40, 70]) do
+    row(0).style align: :center, font_style: :bold, borders: [], padding: 0
+    column(0..2).style align: :left, borders: [], padding: 0
+    column(3..6).style align: :right, borders: [], padding: 0
   end
 
   # TOTALS
@@ -111,32 +111,32 @@ grid([5,0], [12,9]).bounding_box do
   end
 
   # Shipments
-  @order.shipments.each do |shipment|
-    totals << [make_cell(content: shipment.shipping_method.name), shipment.display_cost.to_s]
-  end
+  #@order.shipments.each do |shipment|
+  #  totals << [make_cell(content: shipment.shipping_method.name), shipment.display_cost.to_s]
+  #end
 
   # Totals
   totals << [make_cell(content: Spree.t(:order_total)), @order.display_total.to_s]
 
   # Payments
-  total_payments = 0.0
-  @order.payments.each do |payment|
-    totals << [
-      make_cell(
-        content: Spree.t(:payment_via,
-        gateway: (payment.source_type || Spree.t(:unprocessed, scope: :print_invoice)),
-        number: payment.number,
-        date: I18n.l(payment.updated_at.to_date, format: :long),
-        scope: :print_invoice)
-      ),
-      payment.display_amount.to_s
-    ]
-    total_payments += payment.amount
-  end
+  #total_payments = 0.0
+  #@order.payments.each do |payment|
+  #  totals << [
+  #    make_cell(
+  #      content: Spree.t(:payment_via,
+  #      gateway: (payment.source_type || Spree.t(:unprocessed, scope: :print_invoice)),
+  #      number: payment.number,
+  #      date: I18n.l(payment.updated_at.to_date, format: :long),
+  #      scope: :print_invoice)
+  #    ),
+  #    payment.display_amount.to_s
+  #  ]
+  #  total_payments += payment.amount
+  #end
 
-  table(totals) do
-    row(0..6).style align: :right
-    column(0).style borders: [], font_style: :bold
+  table(totals, position: :right) do
+    row(0..4).style align: :right, borders: [], padding: 0
+    column(0).style borders: [], borders: [], padding: 0
   end
 
   move_down 30
