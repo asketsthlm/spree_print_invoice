@@ -153,11 +153,12 @@ grid([5,0], [12,9]).bounding_box do
   move_down 30
   text Spree::PrintInvoice::Config[:return_message], align: :right, size: @font_size
 end
-line_width 2
-line 197.6,150,217.64,150
+
 # FOOTER
 if Spree::PrintInvoice::Config[:use_footer]
   repeat(:all) do
+    line_width 2
+    line 197.6,150,217.64,150
     grid([14,0], [14,9]).bounding_box do
 
       data  = []
