@@ -31,6 +31,8 @@ grid([5,0], [12,9]).bounding_box do
 
   move_down 20
 
+  pdf.line(100,100,200,250)
+
   order_number_h  = make_cell(content: "Order Number".upcase, font_style: :bold, borders: [], padding: 0)
   order_date_h = make_cell(content: "Order Date".upcase, font_style: :bold, borders: [], padding: 0)
   payment_method_h = make_cell(content: "Payment Method".upcase, font_style: :bold, borders: [], padding: 0)
@@ -65,8 +67,8 @@ grid([5,0], [12,9]).bounding_box do
   #shipping << "\n\n#{Spree.t(:via, scope: :print_invoice)} #{@order.shipments.first.shipping_method.name}"
   shipping = make_cell(content: shippingt, borders: [], padding: 0)
 
-  data = [[address_cell_billing, address_cell_shipping], [billing, shipping]]
-  table(data, position: :left, column_widths: [207, 207])
+  data = [[address_cell_shipping], [shipping]]
+  table(data, position: :left, column_widths: [207])
 
 
   move_down 40
