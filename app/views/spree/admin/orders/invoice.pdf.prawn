@@ -32,7 +32,8 @@ grid([5,0], [12,9]).bounding_box do
   bill_address = @order.bill_address
   ship_address = @order.ship_address
   move_down 20
-  text "#{bill_address.firstname.upcase} #{bill_address.lastname.upcase}", style: :bold, character_spacing: 0.3
+  text "#{bill_address.firstname.upcase} #{bill_address.lastname.upcase}", style: :bold
+  #, character_spacing: 0.3
   #, character_spacing: 0.5
 
   move_down 20
