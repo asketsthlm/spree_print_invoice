@@ -96,8 +96,8 @@ grid([5,0], [12,9]).bounding_box do
       item.variant.name,
       item.variant.option_values[0].presentation,
       item.variant.option_values[1].presentation + " - " + item.variant.option_values[2].presentation,
-      item.single_display_amount.to_s,
       item.quantity,
+      item.single_display_amount.to_s,
       item.display_total.to_s
     ]
     data += [row]
