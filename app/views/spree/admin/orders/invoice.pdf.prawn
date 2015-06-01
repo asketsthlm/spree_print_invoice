@@ -24,12 +24,12 @@ grid([5,1], [12,8]).bounding_box do
 
   font "FoundersGrotesk", size: @font_size
 
-  text "#{bill_address.firstname.upcase} #{bill_address.lastname.upcase}"
-
   # address block on first page only
   repeat(lambda { |pg| pg == 1 }) do
     bill_address = @order.bill_address
     ship_address = @order.ship_address
+
+    text "#{bill_address.firstname.upcase} #{bill_address.lastname.upcase}"
 
     move_down 2
     address_cell_billing  = make_cell(content: Spree.t(:billing_address), font_style: :bold)
