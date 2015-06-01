@@ -31,7 +31,7 @@ grid([5,0], [12,9]).bounding_box do
 
   move_down 20
 
-  pdf.line(100,100,200,250)
+  line 100,100,250,250
 
   order_number_h  = make_cell(content: "Order Number".upcase, font_style: :bold, borders: [], padding: 0)
   order_date_h = make_cell(content: "Order Date".upcase, font_style: :bold, borders: [], padding: 0)
@@ -99,6 +99,7 @@ grid([5,0], [12,9]).bounding_box do
     row(0).style align: :center, font_style: :bold, borders: [], padding: 0
     column(0..2).style align: :left, borders: [], padding: 0
     column(3..6).style align: :right, borders: [], padding: 0
+    row(-1).style borders: [:bottom]
   end
 
   # TOTALS
