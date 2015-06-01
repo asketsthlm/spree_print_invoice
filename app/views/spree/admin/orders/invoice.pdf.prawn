@@ -26,25 +26,24 @@ grid([5,0], [12,9]).bounding_box do
   bill_address = @order.bill_address
   ship_address = @order.ship_address
 
-  text "#{bill_address.firstname.upcase} #{bill_address.lastname.upcase}", style: :bold
-  #character_spacing: 2
+  text "#{bill_address.firstname.upcase} #{bill_address.lastname.upcase}", style: :bold, character_spacing: 1
 
-  move_down 10
+  move_down 30
 
-  order_number_h  = make_cell(content: "Order Number".upcase, font_style: :bold, borders: [], padding: 0)
+  order_number_h  = make_cell(content: Spree.t(:order_number).upcase, font_style: :bold, borders: [], padding: 0)
   order_date_h = make_cell(content: "Order Date".upcase, font_style: :bold, borders: [], padding: 0)
   payment_method_h = make_cell(content: "Payment Method".upcase, font_style: :bold, borders: [], padding: 0)
   delivery_h = make_cell(content: "Delivery".upcase, font_style: :bold, borders: [], padding: 0)
 
-  order_number = make_cell(content: Spree.t(:order_number, number: @order.number), borders: [], padding: 0)
+  order_number = make_cell(content: @order.number.to_s, borders: [], padding: 0)
   order_date = make_cell(content: I18n.l(@order.completed_at.to_date), borders: [], padding: 0)
   payment_method = make_cell(content: "Credit Card (Paid)", borders: [], padding: 0)
   delivery = make_cell(content: @order.shipments[0].shipping_method.name, borders: [], padding: 0)
 
   data = [[order_number_h, order_date_h, payment_method_h, delivery_h], [order_number, order_date, payment_method, delivery]]
-  table(data, position: :left, column_widths: [100, 100,100,100])
+  table(data, position: :left, column_widths: [105, 105,105,105])
 
-  move_down 10
+  move_down 30
   address_cell_billing  = make_cell(content: Spree.t(:billing_address).upcase, font_style: :bold, borders: [], padding: 0)
   address_cell_shipping = make_cell(content: Spree.t(:shipping_address).upcase, font_style: :bold, borders: [], padding: 0)
 
@@ -66,7 +65,7 @@ grid([5,0], [12,9]).bounding_box do
   shipping = make_cell(content: shippingt, borders: [], padding: 0)
 
   data = [[address_cell_billing, address_cell_shipping], [billing, shipping]]
-  table(data, position: :left, column_widths: [200, 200])
+  table(data, position: :left, column_widths: [210, 210])
 
 
   move_down 10
@@ -93,7 +92,7 @@ grid([5,0], [12,9]).bounding_box do
     data += [row]
   end
 
-  table(data, header: true, position: :center) do
+  table(data, header: true, position: :right) do
     row(0).style align: :center, font_style: :bold
     column(0..2).style align: :left
     column(3..6).style align: :right
