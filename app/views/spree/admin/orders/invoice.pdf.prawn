@@ -108,15 +108,16 @@ grid([5,0], [12,9]).bounding_box do
   # Subtotal
   totals << [make_cell(content: Spree.t(:subtotal)), @order.display_item_total.to_s]
 
-  if @order.all_adjustments.eligible.tax.exists?
-    @order.all_adjustments.eligible.tax.group_by(&:label).each do |label, adjustments|
-      totals << [make_cell(content: Spree.t(:tax)+" "+label), Spree::Money.new(adjustments.sum(&:amount), currency: @order.currency).to_s]
-    end
-  end
   # Adjustments other than tax
   @order.all_adjustments.eligible.each do |adjustment|
-    next if (adjustment.source_type == 'Spree::TaxRate') and (adjustment.amount == 0)
+    next if (adjustment.source_type == 'Spree::TaxRate') or (adjustment.amount == 0)
     totals << [make_cell(content: adjustment.label), adjustment.display_amount.to_s]
+  end
+
+  if @order.all_adjustments.eligible.tax.exists?
+    @order.all_adjustments.eligible.tax.group_by(&:label).each do |label, adjustments|
+      totals << [make_cell(content: label), Spree::Money.new(adjustments.sum(&:amount), currency: @order.currency).to_s]
+    end
   end
 
   # Shipments
@@ -144,8 +145,9 @@ grid([5,0], [12,9]).bounding_box do
   #end
 
   table(totals, position: :right, column_widths: [200, 50]) do
-    row(0..5).style align: :right, borders: [], padding: 0
+    row(0..5).style align: :right
     column(0).style borders: [], padding: 0
+    column(1).style borders: [], padding: 0
     row(-1).style align: :right, font_style: :bold
   end
 
