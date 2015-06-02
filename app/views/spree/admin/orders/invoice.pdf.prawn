@@ -129,7 +129,7 @@ grid([5,0], [12,9]).bounding_box do
   end
 
   # Totals
-  totals << [make_cell(content: Spree.t(:order_total)), @order.display_total.to_s]
+  totals << [make_cell(content: Spree.t(:order_total).upcase), @order.display_total.to_s]
 
   # Payments
   #total_payments = 0.0
@@ -147,7 +147,7 @@ grid([5,0], [12,9]).bounding_box do
   #  total_payments += payment.amount
   #end
 
-  table(totals, position: :right, column_widths: [100, 50]) do
+  table(totals, position: :right, column_widths: [200, 50]) do
     row(0..5).style align: :right, borders: [], padding: 0
     column(0).style borders: [], padding: 0
     row(-1).style align: :right, font_style: :bold
