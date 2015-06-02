@@ -1,6 +1,5 @@
 define_grid(columns: 10, rows: 16, gutter: 10)
 
-@font_face = Spree::PrintInvoice::Config[:font_face]
 @font_size = Spree::PrintInvoice::Config[:font_size]
 
 line_width 0.001
@@ -15,30 +14,21 @@ repeat(:all) do
   if im && File.exist?(im.pathname)
     image im.pathname, vposition: :top, position: :center, height: 110
   end
-
   font "ChronicleDisp"
   move_down 27
   text "Your Delivery", align: :center, style: :bold, size: 40
-#  move_down 4
-#  text Spree.t(:order_number, number: @order.number), align: :right
-#  move_down 2
-#  text I18n.l(@order.completed_at.to_date), align: :right
 end
 
+font "FoundersGrotesk", size: @font_size
 # CONTENT
 grid([5,0], [12,9]).bounding_box do
-
-  font "FoundersGrotesk", size: @font_size
   bill_address = @order.bill_address
   ship_address = @order.ship_address
   move_down 20
   text "#{bill_address.firstname.upcase} #{bill_address.lastname.upcase}", style: :bold
-  #, character_spacing: 0.3
   #, character_spacing: 0.5
 
   move_down 20
-
-  
 
   order_number_h  = make_cell(content: "Order Number".upcase, font_style: :bold, borders: [], padding: 0)
   order_date_h = make_cell(content: "Order Date".upcase, font_style: :bold, borders: [], padding: 0)
@@ -118,8 +108,14 @@ grid([5,0], [12,9]).bounding_box do
   # Subtotal
   totals << [make_cell(content: Spree.t(:subtotal)), @order.display_item_total.to_s]
 
-  # Adjustments
+  if @order.all_adjustments.eligible.tax.exists?
+    @order.all_adjustments.eligible.tax.group_by(&:label).each do |label, adjustments|
+      totals << [make_cell(content: Spree.t(:tax)+" "+label), Spree::Money.new(adjustments.sum(&:amount), currency: @order.currency).to_s]
+    end
+  end
+  # Adjustments other than tax
   @order.all_adjustments.eligible.each do |adjustment|
+    next if (adjustment.source_type == 'Spree::TaxRate') and (adjustment.amount == 0)
     totals << [make_cell(content: adjustment.label), adjustment.display_amount.to_s]
   end
 
