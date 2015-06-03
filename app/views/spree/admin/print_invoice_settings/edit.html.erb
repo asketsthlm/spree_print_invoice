@@ -88,6 +88,12 @@
             <legend><%= Spree.t(:invoice_slip_legend, scope: :print_invoice) %></legend>
 
             <div class="form-group">
+              <%= label_tag :footer_center, Spree.t(:footer_center, scope: [:print_invoice, :preferences]) %>
+              <%= text_area_tag(:footer_center, Spree::PrintInvoice::Config[:footer_center], rows: 5, class: 'form-control') %>
+              <%= content_tag(:span, Spree.t(:footer_center_info, scope: [:print_invoice, :preferences]), class: 'info') %>
+            </div>
+
+            <div class="form-group">
               <%= label_tag :footer_left, Spree.t(:footer_left, scope: [:print_invoice, :preferences]) %>
               <%= text_area_tag(:footer_left, Spree::PrintInvoice::Config[:footer_left], rows: 5, class: 'form-control') %>
               <%= content_tag(:span, Spree.t(:footer_left_info, scope: [:print_invoice, :preferences]), class: 'info') %>

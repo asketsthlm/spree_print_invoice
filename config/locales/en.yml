@@ -18,6 +18,8 @@ en:
         use_footer: Use Footer
         use_page_numbers: Use Page Numbers
         anomaly_message: Order Anomaly Message
+        footer_left: Center Footer Content
+        footer_left_info: E.g. Your company name and address.
         footer_left: Left Footer Content
         footer_left_info: E.g. Your company name and address.
         footer_right: Right Footer Content

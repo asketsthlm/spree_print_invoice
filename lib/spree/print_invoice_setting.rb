@@ -7,6 +7,7 @@ module Spree
     preference :page_layout,      :string,  default: 'portait'
     preference :footer_left,      :string,  default: ''
     preference :footer_right,     :string,  default: ''
+    preference :footer_center,    :string,  default: ''
     preference :return_message,   :text,    default: ''
     preference :anomaly_message,  :text,    default: ''
     preference :use_footer,       :boolean, default: false
