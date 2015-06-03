@@ -18,12 +18,12 @@ en:
         use_footer: Use Footer
         use_page_numbers: Use Page Numbers
         anomaly_message: Order Anomaly Message
-        footer_left: Center Footer Content
-        footer_left_info: E.g. Your company name and address.
+        footer_center: Center Footer Content
+        footer_center_info: E.g. Your company name and address.
         footer_left: Left Footer Content
-        footer_left_info: E.g. Your company name and address.
+        footer_left_info: E.g. Your organization number
         footer_right: Right Footer Content
-        footer_right_info: E.g. Your phone and email address.
+        footer_right_info: E.g. Your VAT number
         page_layout: Page Layout
         page_size: Page Size
         print_buttons: Print Buttons
@@ -39,6 +39,6 @@ en:
       unprocessed: Unprocessed
       vat: VAT not applicable
       pdf_legend: PDF Layout
-      invoice_slip_legend: Invoice/Slip Content
+      invoice_slip_legend: Invoice Content
       invoice_number: 'Invoice Number %{number}'
       invoice_date: Invoice Date
