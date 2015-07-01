@@ -25,8 +25,25 @@ module ActionView
                   :bold => "/var/www/asket-backend/app/assets/fonts/FoundersGrotesk-Medium.ttf",
                   :bold_italic => "/var/www/asket-backend/app/assets/fonts/FoundersGrotesk-Medium.ttf",
                   :italic => "/var/www/asket-backend/app/assets/fonts/FoundersGrotesk-Light.ttf"
-                }
-                )
+                },
+                "chinese" => {
+                  :normal => "/var/www/asket-backend/app/assets/fonts/chinese.ttf",
+                  :bold => "/var/www/asket-backend/app/assets/fonts/chinese.ttf",
+                  :bold_italic => "/var/www/asket-backend/app/assets/fonts/chinese.ttf",
+                  :italic => "/var/www/asket-backend/app/assets/fonts/chinese.ttf"
+                },
+                "japanese" => {
+                  :normal => "/var/www/asket-backend/app/assets/fonts/japanese.ttf",
+                  :bold => "/var/www/asket-backend/app/assets/fonts/japanese.ttf",
+                  :bold_italic => "/var/www/asket-backend/app/assets/fonts/japanese.ttf",
+                  :italic => "/var/www/asket-backend/app/assets/fonts/japanese.ttf"
+                },
+                "OpenSans" => {
+                  :normal => "/var/www/asket-backend/app/assets/fonts/OpenSans-Light.ttf",
+                  :bold => "/var/www/asket-backend/app/assets/fonts/OpenSans-Semibold.ttf",
+                  :bold_italic => "/var/www/asket-backend/app/assets/fonts/OpenSans-Semibold.ttf",
+                  :italic => "/var/www/asket-backend/app/assets/fonts/OpenSans-Light.ttf"
+                })
               #{template.source}
               pdf.render
             PDF
